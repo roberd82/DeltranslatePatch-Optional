@@ -5,7 +5,7 @@ on:
   push:
     branches: [main]
     paths:
-      - 'override/**'
+      - 'quicktale/**'
 
 concurrency:
   group: ${{ github.workflow }}
@@ -23,9 +23,9 @@ jobs:
       - name: Install 7-Zip
         run: sudo apt-get update && sudo apt-get install -y p7zip-full
           
-      - name: Create "override.7z" ("fast" compression)
+      - name: Create "quicktale.7z" ("fast" compression)
         run: |
-          7z a -t7z -mx=1 override.7z ./override/*
+          7z a -t7z -mx=1 quicktale.7z ./quicktale/*
           
       - name: Move "latest" tag to current commit
         run: |
@@ -80,7 +80,7 @@ jobs:
               }
             );
             const assetsToDelete = assets.filter(asset => 
-              asset.name.startsWith('override.')
+              asset.name.startsWith('quicktale.')
             );
             for (const asset of assetsToDelete) {
               await github.rest.repos.deleteReleaseAsset({
@@ -90,9 +90,9 @@ jobs:
               });
             }
           
-      - name: Upload "override" archive
+      - name: Upload "quicktale" archive
         uses: shogo82148/actions-upload-release-asset@v1
         with:
           upload_url: ${{ steps.get_release.outputs.upload_url }}
-          asset_path: ./override.7z
-          asset_name: override.7z
+          asset_path: ./quicktale.7z
+          asset_name: quicktale.7z
