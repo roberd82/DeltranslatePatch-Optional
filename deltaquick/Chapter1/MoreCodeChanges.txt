@@ -265,7 +265,7 @@ if (os_type == os_android
             with (obj_event_manager)
             {
                 load_trophies(pad);
-            }   
+            }
 +++
             //with (obj_event_manager) load_trophies(pad);
 %%%

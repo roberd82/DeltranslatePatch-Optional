@@ -2,7 +2,7 @@ function scr_draw_screen_border(arg0)
 {
     var border_id = arg0;
     draw_enable_alphablend(false);
-    // Wide added in CodeChanges.txt
+    /* Wide added in CodeChanges.txt */
     if (border_id == "Dynamic" || border_id == "ダイナミック")
     {
         if (!loaded)
@@ -28,7 +28,6 @@ function scr_draw_screen_border(arg0)
         if (room_id == PLACE_CONTACT || room_id == 317 || room_id == PLACE_MENU || room_id == room_splashscreen || room_id == room_gameover || room_id == PLACE_DOG || room_id == room_dark1a || room_id == room_dark_eyepuzzle)
             obj_time.border_alpha = 0;
         else if (room_id == room_insidecloset || room_id == room_cc_fountain || (asset_get_index("border_dw_field") != -1 && room_id == room_field_start && global.flag[209] == 0))
-            // fade out
             obj_time.border_fade_out = obj_time.border_alpha > 0;
         else if (room_id == room_town_krisyard || room_id == room_castle_town || room_id == room_town_school
             || room_id == room_field1
@@ -39,7 +38,6 @@ function scr_draw_screen_border(arg0)
             || room_id == room_forest_castlefront
             || room_id == room_cc_entrance
             || room_id == room_cc_prison_cells)
-            // fade in
             obj_time.border_fade_in = obj_time.border_alpha < 1;
         else if (instance_exists(obj_savepoint))
             obj_time.border_alpha = 1;
