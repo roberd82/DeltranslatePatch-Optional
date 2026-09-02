@@ -65,7 +65,7 @@ jobs:
       - name: Create archives ("fast" compression)
         run: |
           7z a -t7z -mx=1 chapter1_custom_borders.7z ./chapter1_custom_borders/*
-          mv -f ./chapter1_custom_borders/* ./deltaquick/
+          cp -r ./chapter1_custom_borders/* ./deltaquick/
           7z a -t7z -mx=1 deltaquick.7z ./deltaquick/*
       
       - name: Delete old assets from release
