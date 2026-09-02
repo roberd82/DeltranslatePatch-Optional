@@ -1,6 +1,7 @@
 [
     "tools",
     "FIX_AUDIO",
+    "DELTAQUICK",
     "ImportGraphics",
     "TouchControlsEnabler",
     "Chapter2/Fix",
