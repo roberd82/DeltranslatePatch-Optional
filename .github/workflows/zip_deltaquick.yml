@@ -4,8 +4,9 @@ on:
   workflow_dispatch: # Manually
   push:
     branches: [main]
-    paths:
-      - 'deltaquick/**'
+    paths-ignore:
+      - "README.MD"
+      - ".gitignore"
 
 concurrency:
   group: ${{ github.workflow }}
