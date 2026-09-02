@@ -60,3 +60,11 @@ virtual_key_f1p = virtual_key_add(0, 0, 0, 0, 14)
 virtual_key_f1 = virtual_key_add(0, 0, 0, 0, 15)
 latestGuiH = display_get_gui_height()
 latestGuiW = display_get_gui_width()
+
+function get_touch_variant(prefixed_name, base_sprite)
+{
+    if (!variable_global_exists("darkzone") || !global.darkzone)
+        return base_sprite;
+    var variant = asset_get_index(prefixed_name);
+    return variant != -1 ? variant : base_sprite;
+}

@@ -17,22 +17,13 @@ draw_text_transformed_colour((settings_num_x * ratio), (67 * ratioVertical), but
 draw_text_transformed_colour((settings_num_x * ratio), (113 * ratioVertical), analog_scale, (1 * ratio), (1 * ratioVertical), 0, c_white, c_white, c_white, c_white, text_black_fade)
 draw_text_transformed_colour((settings_num_x * ratio), (159 * ratioVertical), joystick_type, (1 * ratio), (1 * ratioVertical), 0, c_white, c_white, c_white, c_white, text_black_fade)
 draw_text_transformed_colour((settings_num_x * ratio), (205 * ratioVertical), controls_opacity, (1 * ratio), (1 * ratioVertical), 0, c_white, c_white, c_white, c_white, text_black_fade)
-function get_touch_variant(prefixed_name, base_sprite, use_variant)
-{
-    var variant = asset_get_index(prefixed_name);
-    return (variant != -1 && use_variant) ? variant : base_sprite;
-}
+var zone_prefix = is_in_castle_town() ? "spr_ct_" : "spr_dw_";
+draw_sprite_ext(get_touch_variant(zone_prefix + "z_button", spr_z_button), keyboard_check(ord("Z")), (zx * ratio), (zy * ratioVertical), (button_scale * ratio), (button_scale * ratioVertical), 0, c_white, controls_opacity)
+draw_sprite_ext(get_touch_variant(zone_prefix + "x_button", spr_x_button), keyboard_check(ord("X")), (xx * ratio), (xy * ratioVertical), (button_scale * ratio), (button_scale * ratioVertical), 0, c_white, controls_opacity)
+draw_sprite_ext(get_touch_variant(zone_prefix + "c_button", spr_c_button), keyboard_check(ord("C")), (cx * ratio), (cy * ratioVertical), (button_scale * ratio), (button_scale * ratioVertical), 0, c_white, controls_opacity)
+draw_sprite_ext(get_touch_variant(zone_prefix + "joybase", spr_joybase), joystick_type, (analog_posx * ratio), (analog_posy * ratioVertical), (analog_scale * ratio), (analog_scale * ratioVertical), 0, c_white, controls_opacity)
+draw_sprite_ext(get_touch_variant(zone_prefix + "joystick", spr_joystick), joystick_type, (analog_center_x * ratio), (analog_center_y * ratioVertical), (analog_scale * ratio), (analog_scale * ratioVertical), 0, c_white, controls_opacity)
+draw_sprite_ext(get_touch_variant(zone_prefix + "settings", spr_settings), keyboard_check(92 /* ord("\") */), (settingsx * ratio), (settingsy * ratioVertical), (button_scale/* * 0.5*/ * ratio), (button_scale/* * 0.5*/ * ratioVertical), 0, c_white, controls_opacity)
 
-var in_castle = is_in_castle_town();
-var zone_prefix = in_castle ? "spr_ct_" : "spr_dw_";
-var use_variant = in_castle || global.darkzone;
-
-draw_sprite_ext(get_touch_variant(zone_prefix + "z_button", spr_z_button, use_variant), keyboard_check(ord("Z")), (zx * ratio), (zy * ratioVertical), (button_scale * ratio), (button_scale * ratioVertical), 0, c_white, controls_opacity)
-draw_sprite_ext(get_touch_variant(zone_prefix + "x_button", spr_x_button, use_variant), keyboard_check(ord("X")), (xx * ratio), (xy * ratioVertical), (button_scale * ratio), (button_scale * ratioVertical), 0, c_white, controls_opacity)
-draw_sprite_ext(get_touch_variant(zone_prefix + "c_button", spr_c_button, use_variant), keyboard_check(ord("C")), (cx * ratio), (cy * ratioVertical), (button_scale * ratio), (button_scale * ratioVertical), 0, c_white, controls_opacity)
-draw_sprite_ext(get_touch_variant(zone_prefix + "joybase", spr_joybase, use_variant), joystick_type, (analog_posx * ratio), (analog_posy * ratioVertical), (analog_scale * ratio), (analog_scale * ratioVertical), 0, c_white, controls_opacity)
-draw_sprite_ext(get_touch_variant(zone_prefix + "joystick", spr_joystick, use_variant), joystick_type, (analog_center_x * ratio), (analog_center_y * ratioVertical), (analog_scale * ratio), (analog_scale * ratioVertical), 0, c_white, controls_opacity)
-draw_sprite_ext(get_touch_variant(zone_prefix + "settings", spr_settings, use_variant), keyboard_check(92 /* ord("\") */), (settingsx * ratio), (settingsy * ratioVertical), (button_scale/* * 0.5*/ * ratio), (button_scale/* * 0.5*/ * ratioVertical), 0, c_white, controls_opacity)
-
-if (variable_global_exists("chapter") && global.darkzone && !in_castle && global.chapter == 2)
-    draw_sprite_ext(get_touch_variant(zone_prefix + "f1_button", spr_f1_button, use_variant), keyboard_check(vk_f1), (f1x * ratio), (f1y * ratioVertical), (button_scale/* * 0.5*/ * ratio), (button_scale/* * 0.5*/ * ratioVertical), 0, c_white, controls_opacity);
+if (variable_global_exists("darkzone") && global.darkzone && !is_in_castle_town() && global.chapter == 2)
+    draw_sprite_ext(get_touch_variant(zone_prefix + "f1_button", spr_f1_button), keyboard_check(vk_f1), (f1x * ratio), (f1y * ratioVertical), (button_scale/* * 0.5*/ * ratio), (button_scale/* * 0.5*/ * ratioVertical), 0, c_white, controls_opacity);

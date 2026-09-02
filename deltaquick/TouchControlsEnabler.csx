@@ -208,7 +208,7 @@ if (obj_gamecontroller is not null)
 if (os_type == os_android && !instance_exists(obj_mobilecontrols))
     instance_create(0, 0, obj_mobilecontrols);
 ```
-should be added to the end of it, since this needs to run befor Fix.csx*/
+should be added to the end of it, since this needs to run before Fix.csx*/
 var obj_time = Data.GameObjects.ByName("obj_time");
 if (obj_time is not null)
 {
