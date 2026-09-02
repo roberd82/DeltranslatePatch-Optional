@@ -65,6 +65,14 @@ pad_index = -1
 load_trophies = function(arg0)
 {
 +++
+gp_get_achievement_id = function(arg0)
+{
+    if (arg0 >= 0 && arg0 < array_length(gp_achievement_ids))
+        return gp_achievement_ids[arg0];
+    
+    return "";
+};
+
 load_trophies = function(arg0)
 {
     if (os_type == os_android)
