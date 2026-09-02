@@ -22,11 +22,7 @@ jobs:
 
       - name: Install 7-Zip
         run: sudo apt-get update && sudo apt-get install -y p7zip-full
-          
-      - name: Create "deltaquick.7z" ("fast" compression)
-        run: |
-          7z a -t7z -mx=1 deltaquick.7z ./deltaquick/*
-          
+      
       - name: Move "latest" tag to current commit
         run: |
           git config user.email "github-actions[bot]@users.noreply.github.com"
@@ -64,7 +60,13 @@ jobs:
                 throw error;
               }
             }
-            
+      
+      - name: Create archives ("fast" compression)
+        run: |
+          7z a -t7z -mx=1 chapter1_custom_borders.7z ./chapter1_custom_borders/*
+          mv ./chapter1_custom_borders/* ./deltaquick/
+          7z a -t7z -mx=1 deltaquick.7z ./deltaquick/*
+      
       - name: Delete old assets from release
         uses: actions/github-script@v7
         with:
@@ -80,7 +82,7 @@ jobs:
               }
             );
             const assetsToDelete = assets.filter(asset => 
-              asset.name.startsWith('deltaquick.') || asset.name.startsWith('quicktale.')
+              asset.name.startsWith('deltaquick.') || asset.name.startsWith('quicktale.') || asset.name.startsWith('chapter1_custom_borders.')
             );
             for (const asset of assetsToDelete) {
               await github.rest.repos.deleteReleaseAsset({
@@ -103,3 +105,10 @@ jobs:
           upload_url: ${{ steps.get_release.outputs.upload_url }}
           asset_path: ./deltaquick.7z
           asset_name: quicktale.7z
+      
+      - name: Upload "chapter1_custom_borders" archive
+        uses: shogo82148/actions-upload-release-asset@v1
+        with:
+          upload_url: ${{ steps.get_release.outputs.upload_url }}
+          asset_path: ./chapter1_custom_borders.7z
+          asset_name: chapter1_custom_borders.7z
