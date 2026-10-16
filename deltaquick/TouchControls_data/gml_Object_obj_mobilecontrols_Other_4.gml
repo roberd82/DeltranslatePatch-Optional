@@ -1,3 +1,4 @@
+touch_disabled = is_video_object_active()
 latestGuiW = display_get_gui_width()
 latestGuiH = display_get_gui_height()
 var ratio = latestGuiW / 640
@@ -16,6 +17,8 @@ virtual_key_delete(virtual_key_cp)
 virtual_key_delete(virtual_key_f1p)
 virtual_key_delete(virtual_key_analog)
 virtual_key_delete(virtual_key_analogp)
+if (touch_disabled)
+    return
 virtual_key_zp = virtual_key_add((zx * ratio), (zy * ratioVertical), (27 * button_scale * ratio), (29 * button_scale * ratioVertical), 125)
 virtual_key_xp = virtual_key_add((xx * ratio), (xy * ratioVertical), (27 * button_scale * ratio), (29 * button_scale * ratioVertical), 124)
 virtual_key_cp = virtual_key_add((cx * ratio), (cy * ratioVertical), (27 * button_scale * ratio), (29 * button_scale * ratioVertical), 94)

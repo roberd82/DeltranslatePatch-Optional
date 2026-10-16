@@ -1,3 +1,7 @@
+if (is_video_object_active() != touch_disabled)
+    scr_add_keys()
+if (touch_disabled)
+    exit
 if ((!(display_get_gui_width() == latestGuiW)) || (!(display_get_gui_height() == latestGuiH)))
     scr_add_keys()
 if mouse_check_button(mb_left)

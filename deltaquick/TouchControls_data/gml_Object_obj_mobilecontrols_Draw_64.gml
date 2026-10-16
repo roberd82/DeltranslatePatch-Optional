@@ -1,3 +1,5 @@
+if (touch_disabled)
+    exit
 var ratio = display_get_gui_width() / 640
 var ratioVertical = display_get_gui_height() / 480
 draw_sprite_ext(spr_black, 0, 0, 0, (1 * ratio), (1 * ratioVertical), 0, c_white, black_fade)

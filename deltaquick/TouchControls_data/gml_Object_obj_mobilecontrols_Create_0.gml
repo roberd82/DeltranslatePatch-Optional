@@ -21,6 +21,15 @@ joystick_type = 0
 settingsx = -50
 settingsy = 5
 edit = 0
+touch_disabled = false
+video_objects = []
+var video_names = ["obj_room_garden_video", "obj_ch3_couch_video"]
+for (var i = 0; i < array_length(video_names); i++)
+{
+    var video_index = asset_get_index(video_names[i])
+    if (video_index != -1)
+        array_push(video_objects, video_index)
+}
 black_fade = 0
 text_black_fade = 0
 controls_opacity = 0.5
@@ -67,4 +76,14 @@ function get_touch_variant(prefixed_name, base_sprite)
         return base_sprite;
     var variant = asset_get_index(prefixed_name);
     return variant != -1 ? variant : base_sprite;
+}
+
+function is_video_object_active()
+{
+    for (var i = 0; i < array_length(video_objects); i++)
+    {
+        if (instance_exists(video_objects[i]))
+            return true
+    }
+    return false
 }
