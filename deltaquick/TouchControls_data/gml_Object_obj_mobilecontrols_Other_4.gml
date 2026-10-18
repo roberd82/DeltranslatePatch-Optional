@@ -27,9 +27,9 @@ virtual_key_analogp = virtual_key_add((analog_posx * ratio), (analog_posy * rati
 virtual_key_settings = virtual_key_add((settingsx * ratio), (settingsy * ratioVertical), (19 * button_scale * ratio), (25 * button_scale * ratioVertical), 92)
 if (edit != 0)
     return;
-virtual_key_z = virtual_key_add((zx * ratio), (zy * ratioVertical), (27 * button_scale * ratio), (29 * button_scale * ratioVertical), 90)
-virtual_key_x = virtual_key_add((xx * ratio), (xy * ratioVertical), (27 * button_scale * ratio), (29 * button_scale * ratioVertical), 88)
-virtual_key_c = virtual_key_add((cx * ratio), (cy * ratioVertical), (27 * button_scale * ratio), (29 * button_scale * ratioVertical), 67)
+virtual_key_z = virtual_key_add((zx * ratio), (zy * ratioVertical), (27 * button_scale * ratio), (29 * button_scale * ratioVertical), vk_enter)
+virtual_key_x = virtual_key_add((xx * ratio), (xy * ratioVertical), (27 * button_scale * ratio), (29 * button_scale * ratioVertical), vk_shift)
+virtual_key_c = virtual_key_add((cx * ratio), (cy * ratioVertical), (27 * button_scale * ratio), (29 * button_scale * ratioVertical), vk_control)
 virtual_key_f1 = virtual_key_add((f1x * ratio), (f1y * ratioVertical), (19 * button_scale * ratio), (25 * button_scale * ratioVertical), 112);
 virtual_key_up = virtual_key_add((analog_posx - arrowkeys_back_area_size * analog_scale * ratio), (analog_posy - arrowkeys_back_area_size * analog_scale * ratioVertical), (arrowkeys_back_area_size * analog_scale * ratio + (59 * analog_scale * ratio + arrowkeys_back_area_size * analog_scale * ratio)), (arrowkeys_area_size * analog_scale * ratioVertical + arrowkeys_back_area_size * analog_scale * ratioVertical), 38)
 virtual_key_right = virtual_key_add((analog_posx + 59 * analog_scale * ratio - arrowkeys_area_size * analog_scale * ratio), (analog_posy - arrowkeys_back_area_size * analog_scale * ratioVertical), (arrowkeys_area_size * analog_scale * ratio + arrowkeys_back_area_size * analog_scale * ratio), (arrowkeys_back_area_size * analog_scale * ratioVertical + 59 * analog_scale * ratioVertical + arrowkeys_back_area_size * analog_scale * ratioVertical), 39)

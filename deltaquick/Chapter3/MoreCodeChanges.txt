@@ -1,4 +1,3 @@
-
 === gml_Object_obj_initializer2_Create_0
 ---
     if (os_type == os_ps4 || os_type == os_ps5)

@@ -1,4 +1,3 @@
-
 === gml_GlobalScript_scr_chapterswitch
 ---
                 case os_windows:
